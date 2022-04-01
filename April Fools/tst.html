@@ -1,0 +1,86 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>THE HUb</title>
+    <link rel="icon" href="pic/icon.jpeg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tst.css">
+
+    </head>
+
+    <body>
+
+    <nav id="overlay" class="overlay">
+        <section class="overlay-body">
+
+            <p class="overlay-title">
+                您是否已满18岁
+            </p>
+
+            <p class="overlay-title">
+                Are You Above 18?
+            </p>
+
+            <p class="overlay-description">
+                以下内容可能不适合<b>未满18岁<b>的人群观看，我们需要确认您的年龄。
+            </p>
+
+            <p class="overlay-description">
+                The following may not be suitable for people <b>under the age of 18</b>and we need to confirm your age.
+            </p>
+
+            <div class="overlay-buttons-wrapper">
+                <div id="accept-button" class="overlay-button">
+                    已满18岁
+                </div>
+
+                <div id="decline-button" class="overlay-button">
+                    未满18岁
+                </div>
+
+            </div>
+
+            <a href="https://hisuifeng.github.io/cheat/index2.html" target="_blank" class="overlay-link">无法访问？点击使用新链接</a>
+            <a href="https://hisuifeng.github.io/cheat/index2.html" target="_blank" class="overlay-link">Error? Click Here</a>
+
+        </section>
+    </nav>
+
+    <div class="scare">
+    <video id="video" class="video" src="rickroll.mp4" loop="">
+
+    </video>
+
+    </div>
+
+    <script type="text/javascript">
+                const video = document.getElementById("video");
+                const overlay = document.getElementById("overlay");
+                const declineButton = document.getElementById("decline-button");
+                const acceptButton = document.getElementById("accept-button");
+                let hasClicked;
+                window.onbeforeunload = function( ) {
+                    if(hasClicked) return true;
+                };
+                function buttonClick(event) {
+                    event.preventDefault();
+                    if(!hasClicked) hasClicked = true;
+                    overlay.hidden = true;
+                    video.play();
+                    videoClick();
+                }
+                function videoClick(event) {
+                    if(event) event.preventDefault();
+                    // if not fullscreen
+                    const { documentElement } = document;
+                    if(documentElement.requestFullscreen) documentElement.requestFullscreen();
+                    else if(documentElement.mozRequestFullScreen) documentElement.mozRequestFullScreen();
+                    else if(documentElement.webkitRequestFullscreen) documentElement.webkitRequestFullscreen();
+                    else if(documentElement.msRequestFullscreen) documentElement.msRequestFullscreen();
+                }
+                acceptButton.addEventListener("click", buttonClick);
+                declineButton.addEventListener("click", buttonClick);
+                video.addEventListener("click", videoClick);
+            </script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script></body>
